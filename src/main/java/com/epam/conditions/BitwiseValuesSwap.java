@@ -3,11 +3,11 @@ package com.epam.conditions;
 public class BitwiseValuesSwap {
 
     public static void swap(int first, int second) {
-        System.out.println("Before swap: first = " + first + ", second = " + second);
+
         first = first ^ second;
-        second = first ^ second;
+        second = second ^ first;
         first = first ^ second;
-        System.out.println("After swap: first = " + first + ", second = " + second);
+        System.out.println(first + " " + second);
     }
 
 }

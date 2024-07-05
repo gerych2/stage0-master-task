@@ -24,9 +24,7 @@ public class ArrayTasks {
      */
     public int[] generateNumbers(int length) {
         int[] array = new int[length];
-        for (int i = 0; i < length; i++) {
-            array[i] = i + 1;
-        }
+        for (int i = 0; i < length; i++) array[i] = i + 1;
         return array;
     }
 
@@ -39,9 +37,7 @@ public class ArrayTasks {
      */
     public int totalSum(int[] arr) {
         int sum = 0;
-        for (int num : arr) {
-            sum += num;
-        }
+        for (int j : arr) sum += j;
         return sum;
     }
 
@@ -51,15 +47,18 @@ public class ArrayTasks {
      * <p>
      * Example:
      * <p>
-     * arr = [99, -7, 102], number = -7    ->   1 arr = [5, -3, -4],   number = 10    ->  -1
+     * arr = [99, -7, 102], number = -7    ->   2 arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
+        int index = -1;
         for (int i = 0; i < arr.length; i++) {
+
             if (arr[i] == number) {
-                return i;
+                index = i;
+                break;
             }
         }
-        return -1;
+        return index;
     }
 
     /**
@@ -71,9 +70,12 @@ public class ArrayTasks {
      * "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
+
         String[] reversedArr = new String[arr.length];
         for (int i = 0; i < arr.length; i++) {
+
             reversedArr[i] = arr[arr.length - 1 - i];
+
         }
         return reversedArr;
     }
@@ -87,20 +89,20 @@ public class ArrayTasks {
      * arr = [1,-2, 3]      -> [1, 3] arr = [-1, -2, -3]   -> [] arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int count = 0;
-        for (int num : arr) {
-            if (num > 0) {
-                count++;
+        int new_size = 0;
+        for (int i = 0; i < arr.length; i++) if (arr[i] > 0) new_size++;
+        int[] positiveArr = new int[new_size];
+
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+
+            if (arr[i] > 0) {
+                positiveArr[index] = arr[i];
+                index++;
             }
+
         }
 
-        int[] positiveArr = new int[count];
-        int index = 0;
-        for (int num : arr) {
-            if (num > 0) {
-                positiveArr[index++] = num;
-            }
-        }
         return positiveArr;
     }
 
@@ -114,29 +116,42 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public static int[][] sortRaggedArray(int[][] arr) {
-        // Sort arrays by length
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].length > arr[j].length) {
-                    int[] temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
+        int[][] sorted_arr = arr.clone();
+        for (int i = 0; i < sorted_arr.length; i++) {
 
-        // Sort each individual array
-        for (int[] subArr : arr) {
-            for (int i = 0; i < subArr.length - 1; i++) {
-                for (int j = i + 1; j < subArr.length; j++) {
-                    if (subArr[i] > subArr[j]) {
-                        int temp = subArr[i];
-                        subArr[i] = subArr[j];
-                        subArr[j] = temp;
-                    }
+            for (int k = i + 1; k < sorted_arr.length; k++) {
+
+                if (sorted_arr[i].length > sorted_arr[k].length) {
+
+                    int[] temp = sorted_arr[i];
+                    sorted_arr[i] = sorted_arr[k];
+                    sorted_arr[k] = temp;
+
                 }
+
             }
+
         }
-        return arr;
+        for (int i = 0; i < sorted_arr.length; i++) {
+
+            for (int k = 0; k < sorted_arr[i].length; k++) {
+
+                for (int j = k + 1; j < sorted_arr[i].length; j++) {
+
+                    if (sorted_arr[i][k] > sorted_arr[i][j]) {
+
+                        int temp = sorted_arr[i][k];
+                        sorted_arr[i][k] = sorted_arr[i][j];
+                        sorted_arr[i][j] = temp;
+
+                    }
+
+                }
+
+            }
+
+        }
+        return sorted_arr;
     }
+
 }

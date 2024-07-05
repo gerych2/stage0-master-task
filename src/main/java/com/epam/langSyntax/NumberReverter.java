@@ -1,19 +1,18 @@
 package com.epam.langSyntax;
 
+import java.util.Stack;
+
 public class NumberReverter {
 
-    public static int revert(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Number cannot be negative");
-        }
+    public static void revert(int number) {
 
-        int reversedNumber = 0;
-        while (number > 0) {
-            int digit = number % 10;
-            reversedNumber = reversedNumber * 10 + digit;
-            number /= 10;
-        }
+        int revertedNumber = 0;
+        while (number != 0) {
+            revertedNumber = revertedNumber * 10 + number % 10;
+            number = number / 10;
 
-        return reversedNumber;
+        }
+        System.out.println(revertedNumber);
     }
+
 }

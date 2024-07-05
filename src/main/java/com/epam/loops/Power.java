@@ -2,21 +2,18 @@ package com.epam.loops;
 
 public class Power {
 
-    public static int calculatePower(int number, int power) {
-        if (power < 0) {
-            throw new IllegalArgumentException("Power cannot be negative");
-        }
+    public void printPower(int numberToPrint, int power) {
+        int answer = numberToPrint;
+        for (int i = 1; i < power; i++) {
 
-        int result = 1;
-        for (int i = 0; i < power; i++) {
-            result *= number;
-        }
+            answer = answer * numberToPrint;
 
-        return result;
+        }
+        System.out.println(answer);
     }
 
     public static void main(String[] args) {
-        int result = calculatePower(10, 3);
-        System.out.println(result);
+        new Power().printPower(10, 3);
     }
+
 }

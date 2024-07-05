@@ -2,17 +2,17 @@ package com.epam.langSyntax;
 
 public class DigitsSumCalculator {
 
-    public static int calculateSum(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Number cannot be negative");
-        }
+    public static void calculateSum(int number) {
 
         int sum = 0;
-        while (number > 0) {
-            sum += number % 10;
-            number /= 10;
-        }
 
-        return sum;
+        while (number != 0) {
+
+            sum = sum + number % 10;
+            number = number / 10;
+
+        }
+        System.out.println(sum);
     }
+
 }

@@ -2,27 +2,16 @@ package com.epam.loops;
 
 public class HalfPyramid {
 
-    public static void printHalfPyramid(int cathetusLength) {
+    public void printHalfPyramid(int cathetusLength) {
         for (int i = 1; i <= cathetusLength; i++) {
-            printSpaces(cathetusLength - i);
-            printStars(i);
+            for (int k = 1; k <= cathetusLength - i; k++) System.out.print(" ");
+            for (int k = 1; k <= i; k++) System.out.print('*');
             System.out.println();
         }
     }
 
-    private static void printSpaces(int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.print(" ");
-        }
-    }
-
-    private static void printStars(int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.print("*");
-        }
-    }
-
     public static void main(String[] args) {
-        printHalfPyramid(8);
+        new HalfPyramid().printHalfPyramid(8);
     }
+
 }
